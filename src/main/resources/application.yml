@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+  data:
+    elasticsearch:
+      cluster-nodes: 127.0.0.1:9300
+      cluster-name: elasticsearch
+
+#  resources:
+#    static-locations: classpath:static/file/,file:${jar.fileUrl}
+  devtools:
+    add-properties: true
+    restart:
+      additional-paths: static/**
+  jackson:
+    date-format:  yyyy-MM-dd HH:mm:ss
+    serialization:
+      fail-on-empty-beans:  false
+  tomcat:
+    uri-encoding: UTF-8
+  resources:
+    static-locations: classpath:/META-INF/templates/,classpath:/templates/,classpath:/static/,classpath:/public/,classpath:/templates/,classpath:/
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+  mvc:
+    static-path-pattern: /**
